@@ -66,7 +66,7 @@ else:
 filtered_data = data[
     (data['Position'].isin(filtered_positions)) &
     (data['Usage'] >= usage_filter[0]) & (data['Usage'] <= usage_filter[1]) &
-    (data['Minutes Played'] >= minutes_filter[0]) & (data['Minutes Played'] <= minutes_filter[1]) &
+    (data['Minutes played'] >= minutes_filter[0]) & (data['Minutes played'] <= minutes_filter[1]) &
     (data['Tier'].isin(selected_tiers)) &
     (data['League'].isin(selected_leagues))
 ]
