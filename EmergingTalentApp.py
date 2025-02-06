@@ -43,8 +43,8 @@ else:
 # Usage filter (slider)
 usage_filter = st.sidebar.slider('Select Usage Range', int(data['Usage'].min()), int(data['Usage'].max()), (int(data['Usage'].min()), int(data['Usage'].max())))
 
-# Minutes p[layed filter (slider)
-minutes_filter = st.sidebar.slider('Select Minutes Played Range', int(data['Minutes played'].min()), int(data['Minutes played'].max()), (int(data['Minutes played'].min()), int(data['Minutes played'].max())))
+# Minutes played filter (slider)
+minutes_filter = st.sidebar.slider('Select Minutes played Range', int(data['Minutes played'].min()), int(data['Minutes played'].max()), (int(data['Minutes played'].min()), int(data['Minutes played'].max())))
 
 # Tier filter with "All" option
 tier_options = ["All"] + list(data['Tier'].unique())
@@ -94,5 +94,5 @@ def get_best_role(row):
 filtered_data['Best Role'] = filtered_data.apply(get_best_role, axis=1)
 
 # Display data
-st.dataframe(filtered_data[['Player', 'Team', 'Age', 'Position', 'Minutes Played', 'Usage', 'Best Role']])
+st.dataframe(filtered_data[['Player', 'Team', 'Age', 'Position', 'Minutes played', 'Usage', 'Best Role']])
 
