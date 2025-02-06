@@ -43,8 +43,8 @@ else:
 # Usage filter (slider)
 usage_filter = st.sidebar.slider('Select Usage Range', int(data['Usage'].min()), int(data['Usage'].max()), (int(data['Usage'].min()), int(data['Usage'].max())))
 
-# Minutes Played filter (slider)
-minutes_filter = st.sidebar.slider('Select Minutes Played Range', int(data['Minutes Played'].min()), int(data['Minutes Played'].max()), (int(data['Minutes Played'].min()), int(data['Minutes Played'].max())))
+# Minutes p[layed filter (slider)
+minutes_filter = st.sidebar.slider('Select Minutes Played Range', int(data['Minutes played'].min()), int(data['Minutes played'].max()), (int(data['Minutes played'].min()), int(data['Minutes played'].max())))
 
 # Tier filter with "All" option
 tier_options = ["All"] + list(data['Tier'].unique())
