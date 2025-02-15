@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -62,13 +59,26 @@ if "All" in league_filter:
 else:
     selected_leagues = league_filter
 
+# NEW: Foot filter with "All" option
+foot_options = ["All"] + list(data['Foot'].unique())
+foot_filter = st.sidebar.multiselect('Select Foot', foot_options, default=["All"])
+if "All" in foot_filter:
+    selected_feet = data['Foot'].unique()
+else:
+    selected_feet = foot_filter
+
+# NEW: Height filter (slider)
+height_filter = st.sidebar.slider('Select Height Range (cm)', int(data['Height'].min()), int(data['Height'].max()), (int(data['Height'].min()), int(data['Height'].max())))
+
 # Apply filters
 filtered_data = data[
     (data['Position'].isin(filtered_positions)) &
     (data['Usage'] >= usage_filter[0]) & (data['Usage'] <= usage_filter[1]) &
     (data['Minutes played'] >= minutes_filter[0]) & (data['Minutes played'] <= minutes_filter[1]) &
     (data['Tier'].isin(selected_tiers)) &
-    (data['League'].isin(selected_leagues))
+    (data['League'].isin(selected_leagues)) &
+    (data['Foot'].isin(selected_feet)) &
+    (data['Height'] >= height_filter[0]) & (data['Height'] <= height_filter[1])
 ]
 
 # Define role categories
@@ -94,5 +104,4 @@ def get_best_role(row):
 filtered_data['Best Role'] = filtered_data.apply(get_best_role, axis=1)
 
 # Display data
-st.dataframe(filtered_data[['Player', 'Team', 'Age', 'Position', 'Minutes played', 'Usage', 'Best Role']])
-
+st.dataframe(filtered_data[['Player', 'Team', 'Age', 'Position', 'Minutes played', 'Usage', 'Foot', 'Height', 'Best Role']])
