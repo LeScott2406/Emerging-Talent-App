@@ -13,7 +13,7 @@ st.title("Emerging Talent Tracker")
 
 @st.cache_data
 def load_data():
-    file_url = 'https://github.com/LeScott2406/Emerging-Talent-App/raw/refs/heads/main/value_added_model.xlsx'
+    file_url = 'https://github.com/LeScott2406/Emerging-Talent-App/raw/refs/heads/main/value_added_model%203.xlsx'
     response = requests.get(file_url)
     file_content = io.BytesIO(response.content)
     data = pd.read_excel(file_content)
