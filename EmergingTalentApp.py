@@ -74,7 +74,7 @@ filtered_data = data[
     (data['Minutes played'] >= minutes_filter[0]) & (data['Minutes played'] <= minutes_filter[1]) &
     (data['Tier'].isin(selected_tiers)) &
     (data['League'].isin(selected_leagues)) &
-    (data['Foot'].isin(selected_feet)) &
+    (data['Foot'].isin(selected_feet))
 ]
 
 # Define role categories
