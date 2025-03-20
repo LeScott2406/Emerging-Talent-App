@@ -67,9 +67,6 @@ if "All" in foot_filter:
 else:
     selected_feet = foot_filter
 
-# NEW: Height filter (slider)
-height_filter = st.sidebar.slider('Select Height Range (cm)', int(data['Height'].min()), int(data['Height'].max()), (int(data['Height'].min()), int(data['Height'].max())))
-
 # Apply filters
 filtered_data = data[
     (data['Position'].isin(filtered_positions)) &
@@ -78,7 +75,6 @@ filtered_data = data[
     (data['Tier'].isin(selected_tiers)) &
     (data['League'].isin(selected_leagues)) &
     (data['Foot'].isin(selected_feet)) &
-    (data['Height'] >= height_filter[0]) & (data['Height'] <= height_filter[1])
 ]
 
 # Define role categories
@@ -104,4 +100,4 @@ def get_best_role(row):
 filtered_data['Best Role'] = filtered_data.apply(get_best_role, axis=1)
 
 # Display data
-st.dataframe(filtered_data[['Player', 'Team', 'Age', 'Position', 'Minutes played', 'Usage', 'Foot', 'Height', 'Best Role']])
+st.dataframe(filtered_data[['Player', 'Team', 'Age', 'Position', 'Minutes played', 'Usage', 'Foot', 'Best Role']])
